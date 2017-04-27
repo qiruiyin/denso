@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include("./part/head.html")
+	<title>HUD界面</title>
+</head>
+<body>
+	<div class="container">
+		<div class="hud"></div>
+	</div>
+	
+	@@include("./part/libjs.html")
+	<script>
+		(function(){
+			var fun_active = 1,
+					fun_active_num = 1;
+					
+			wss.init("ws://114.215.135.236:7397/websocket", "hud");
+
+			wss.socket.onmessage = function(event) {
+				var data = JSON.parse(event.data);
+		  	document.querySelector(".hud").className = "hud hud" + data.fun + "-" + data.num;
+		  };
+
+		  wss.socket.onclose = function(event) {
+		  	console.log(event);
+		  	// document.querySelector(".textarea").value += event.data + "\r\n";
+		  };
+
+		  var setBoardImg = function(fun, num) {
+				document.querySelector(".hud").className = "hud hud" + fun + "-" + num;
+				var sendData = {
+					fun: fun,
+					num: num
+				};
+
+				wss.sendOper("hud", "board", JSON.stringify(sendData));
+			};
+
+			// 键盘按键事件
+		  document.onkeydown = function(event) {
+				var e = event || window.event || arguments.callee.caller.arguments[0];
+				if(e && e.keyCode == 49) { // 1
+					fun_active = 1;
+					setBoardImg(fun_active, 1);
+				} else if(e && e.keyCode == 50) { // 2
+					fun_active = 2;
+					setBoardImg(fun_active, 1);
+				} else if(e && e.keyCode == 51) { // 3
+					fun_active = 3;
+					setBoardImg(fun_active, 1);
+				} else if(e && e.keyCode == 52) { // 4
+					fun_active = 4;
+					setBoardImg(fun_active, 1);
+				} else if(e && e.keyCode == 53) { // 5
+					fun_active = 5;
+					setBoardImg(fun_active, 1);
+				} else if(e && e.keyCode == 65) { // a
+					fun_active_num = 1;
+					setBoardImg(fun_active, fun_active_num);
+				} else if(e && e.keyCode == 66) { // b
+					fun_active_num = 2;
+					setBoardImg(fun_active, fun_active_num);
+				} else if(e && e.keyCode == 13){ // enter键 是否全屏
+					if(setFullScreen.isFullScreen()) {
+						setFullScreen.exitFullScreen();
+					} else {
+						setFullScreen.launchFullScreen(document.body);
+					}
+				}
+			};
+		})();
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include("./part/head_bak.html")
+	<title>HUD界面</title>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>HUD界面</h1>
+			<div class="fullscreen">全屏显示</div>			
+		</header>
+		<main>
+			<div class="form">
+		  	<input type="text" class="message" name="message" placeholder="请输入需要执行的指令" />
+		  	<input type="button" class="btn" value="发送指令" />
+		  </div>
+
+		  <div class="log">
+		  	<h3>接收服务器响应消息：</h3>
+		  	<textarea class="textarea"></textarea>
+		  </div>
+		</main>
+	</div>
+
+	@@include("./part/libjs.html")
+	<script type="text/javascript" src="./js/setFullScreen.js"></script>
+	<script type="text/javascript" src="./js/socket_bak.js"></script>
+	<script>
+		(function(){
+			$(".fullscreen").on("click", function() {
+				if(setFullScreen.isFullScreen()) {
+					setFullScreen.exitFullScreen();
+				} else {
+					setFullScreen.launchFullScreen(document.body);
+				}
+			});
+
+			$(".btn").on("click", function() {
+				var msg = $(".message")[0].value;
+				wss.sendOper(msg)
+			});
+
+			wss.init("ws://localhost:9001?userId=weukwk");
+
+			wss.socket.onmessage = function(event){
+		  	$(".textarea")[0].value += event.data + "\r\n";
+		  };
+
+		  wss.socket.onclose = function(event){
+		  	$(".textarea")[0].value += event.data + "\r\n";
+		  };
+		})();
+	</script>
+</body>
+</html>

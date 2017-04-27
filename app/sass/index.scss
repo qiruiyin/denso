@@ -1,0 +1,72 @@
+@charset 'utf-8';
+@import  'sandal/core';
+@import  'core/mixins', 'core/functions', 'core/vars';
+
+$boardW: 420px;
+$boardH: 270px;
+$hudW: 416px;
+$hudH: 114px;
+
+html, body {
+	width: 100%;
+	margin: 0 auto;
+  background-color: #fff;
+}
+
+.container {
+
+}
+
+// 直接切换图片
+.board {
+	width: $boardW;
+	height: $boardH;
+	margin: 0 auto;
+	background: url("../img/board1-1.jpg") no-repeat;
+	background-size: 100%;
+	transition: 1s ease-out;
+}
+
+.hud {
+	width: $hudW;
+	height: $hudH;
+	margin: 0 auto;
+	background: url("../img/hud1-1.jpg") no-repeat;
+	background-size: 100%;
+	transition: 1s ease-out;
+}
+
+// 轮播切换
+.swiper-container {
+	width: $boardW;
+	height: $boardH;
+}
+
+.board-img {
+	width: $boardW;
+	height: $boardH;
+	background: url("../img/board1-1.jpg") no-repeat;
+	background-size: 100%;
+}
+
+@for $i from 1 through 5 {
+	.board#{$i}-1 {
+		background-image: url("../img/board#{$i}-1.jpg");
+		transition: 1s ease-out;
+	}
+
+	.board#{$i}-2 {
+		background-image: url("../img/board#{$i}-2.jpg");
+		transition: 1s ease-out;
+	}
+
+	.hud#{$i}-1 {
+		background-image: url("../img/hud#{$i}-1.jpg");
+		transition: 1s ease-out;
+	}
+
+	.hud#{$i}-2 {
+		background-image: url("../img/hud#{$i}-2.jpg");
+		transition: 1s ease-out;
+	}
+}
