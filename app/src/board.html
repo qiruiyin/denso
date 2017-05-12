@@ -5,19 +5,23 @@
 	<title>仪表盘界面</title>
 </head>
 <body>
-	<div class="container">
-		<div class="board"></div>
-
+	<div class="container board">
 		<div id="fun0" class="swiper-container">
 	    <div class="swiper-wrapper">
         <div class="swiper-slide">
         	<div id="fun1" class="swiper-container">
 				    <div class="swiper-wrapper">
 			        <div class="swiper-slide">
-			        	<div class="board-img board1-1"></div>
+			        	<div class="board-img board1-1">
+			        		<div class="speed"><span>58</span>km/h</div>
+			        		<div class="song">歌名</div>
+			        	</div>
         			</div>
         			<div class="swiper-slide">
-			        	<div class="board-img board1-2"></div>
+			        	<div class="board-img board1-2">
+			        		<div class="speed"><span>58</span>km/h</div>
+			        		<div class="song">歌名</div>
+			        	</div>
         			</div>
         		</div>
         	</div>
@@ -26,10 +30,16 @@
         	<div id="fun2" class="swiper-container">
 				    <div class="swiper-wrapper">
 			        <div class="swiper-slide">
-			        	<div class="board-img board2-1"></div>
+			        	<div class="board-img board2-1">
+			        		<div class="speed"><span>58</span>km/h</div>
+			        		<div class="song">歌名</div>
+			        	</div>
         			</div>
         			<div class="swiper-slide">
-			        	<div class="board-img board2-2"></div>
+			        	<div class="board-img board2-2">
+			        		<div class="speed"><span>58</span>km/h</div>
+			        		<div class="song">歌名</div>
+			        	</div>
         			</div>
         		</div>
         	</div>
@@ -38,10 +48,16 @@
         	<div id="fun3" class="swiper-container">
 				    <div class="swiper-wrapper">
 			        <div class="swiper-slide">
-			        	<div class="board-img board3-1"></div>
+			        	<div class="board-img board3-1">
+			        		<div class="speed"><span>58</span>km/h</div>
+			        		<div class="song">歌名</div>
+			        	</div>
         			</div>
         			<div class="swiper-slide">
-			        	<div class="board-img board3-2"></div>
+			        	<div class="board-img board3-2">
+			        		<div class="speed"><span>58</span>km/h</div>
+			        		<div class="song">歌名</div>
+			        	</div>
         			</div>
         		</div>
         	</div>
@@ -50,10 +66,18 @@
         	<div id="fun4" class="swiper-container">
 				    <div class="swiper-wrapper">
 			        <div class="swiper-slide">
-			        	<div class="board-img board4-1"></div>
+			        	<div class="board-img board4-1">
+			        		<div class="speed"><span>58</span>km/h</div>
+			        		<div class="song">歌名</div>
+			        		<img class="board4-1arrow" src="./img/board/board4-1arrow.png" alt="">
+			        	</div>
         			</div>
         			<div class="swiper-slide">
-			        	<div class="board-img board4-2"></div>
+			        	<div class="board-img board4-2">
+			        		<div class="speed"><span>58</span>km/h</div>
+			        		<div class="song">歌名</div>
+			        		<img class="board4-2arrow" src="./img/board/board4-2arrow.png" alt="">
+			        	</div>
         			</div>
         		</div>
         	</div>
@@ -62,117 +86,40 @@
         	<div id="fun5" class="swiper-container">
 				    <div class="swiper-wrapper">
 			        <div class="swiper-slide">
-			        	<div class="board-img board5-1"></div>
+			        	<div class="board-img board5-1">
+			        		<div class="speed"><span>58</span>km/h</div>
+			        		<div class="song">歌名</div>
+			        	</div>
         			</div>
         			<div class="swiper-slide">
-			        	<div class="board-img board5-2"></div>
+			        	<div class="board-img board5-2">
+			        		<div class="speed"><span>58</span>km/h</div>
+			        		<div class="song">歌名</div>
+			        		<img class="board5-2arrow" src="./img/board/board5-2arrow.png" alt="">
+			        	</div>
         			</div>
         		</div>
         	</div>
         </div>
-        <!-- <div class="swiper-slide">
-        	<div class="board-img board2-1"></div>
-        </div>
-        <div class="swiper-slide">
-        	<div class="board-img board3-1"></div>
-        </div>
-        <div class="swiper-slide">
-        	<div class="board-img board4-1"></div>
-        </div>
-        <div class="swiper-slide">
-        	<div class="board-img board5-1"></div>
-        </div> -->
 	    </div>
 	    <!-- 如果需要分页器 -->
 	    <div class="swiper-pagination"></div>
+		</div>
+	
+		<!-- 待机画面 -->
+		<div class="home-screen"></div>
+		<!-- 开机动画 -->
+		<div class="boot-animation">
+			<video id="video" src="img/boot.webm" width="100%">
+				您的浏览器不支持 video 标签。
+			</video>
 		</div>
 	</div>
 
 	@@include("./part/libjs.html")
 	<script>
 		(function(){
-			var fun_active = 1,
-					fun_active_num = 1;
-
-			var funArr = [];
-			for(var i = 0; i < 6; i++) {
-				if(i == 0) {
-					funArr[i] = new Swiper ('#fun' + i, {});	
-				} else {
-					funArr[i] = new Swiper ('#fun' + i, {
-						direction: "vertical",
-				  });
-				}
-			}
-
-			wss.init("ws://114.215.135.236:7397/websocket", "board");
-
-			wss.socket.onmessage = function(event) {
-		  	var data = JSON.parse(event.data);
-		  	if(data.fun) {
-			  	var chosefun = data.fun == fun_active ? -1 : 0;
-			  	setBoardImg(chosefun, data.fun, data.num);
-		  	}
-		  };
-
-		  wss.socket.onclose = function(event) {
-		  	console.log(event);
-		  	// document.querySelector(".textarea").value += event.data + "\r\n";
-		  };
-
-		  wss.socket.onclose = function(event) {
-		  	console.log("链接已断开");
-		  };
-
-			var setBoardImg = function(funs, fun, num) {
-				if(funs == 0) {
-					funArr[fun].slideTo(0, 0, false);
-					funArr[0].slideTo(fun - 1, 1000, false);
-					fun_active = fun;
-				} else {
-					funArr[fun_active].slideTo(num - 1, 1000, false);
-				}
-				document.querySelector(".board").className = "board board" + fun + "-" + num;
-				var sendData = {
-					fun: fun,
-					num: num
-				};
-
-				wss.sendOper("board", "hud", JSON.stringify(sendData));
-			};
-
-			// 键盘按键事件
-		  document.onkeydown = function(event) {
-				var e = event || window.event || arguments.callee.caller.arguments[0];
-				if(e && e.keyCode == 49) { // 1
-					fun_active = 1;
-					setBoardImg(0, fun_active, 1);
-				} else if(e && e.keyCode == 50) { // 2
-					fun_active = 2;
-					setBoardImg(0, fun_active, 1);
-				} else if(e && e.keyCode == 51) { // 3
-					fun_active = 3;
-					setBoardImg(0, fun_active, 1);
-				} else if(e && e.keyCode == 52) { // 4
-					fun_active = 4;
-					setBoardImg(0, fun_active, 1);
-				} else if(e && e.keyCode == 53) { // 5
-					fun_active = 5;
-					setBoardImg(0, fun_active, 1);
-				} else if(e && e.keyCode == 65) { // a
-					fun_active_num = 1;
-					setBoardImg(-1, fun_active, fun_active_num);
-				} else if(e && e.keyCode == 66) { // b
-					fun_active_num = 2;
-					setBoardImg(-1, fun_active, fun_active_num);
-				} else if(e && e.keyCode == 13){ // enter键 是否全屏
-					if(setFullScreen.isFullScreen()) {
-						setFullScreen.exitFullScreen();
-					} else {
-						setFullScreen.launchFullScreen(document.body);
-					}
-				}
-			};
+			init("board", "hud");
 		})();
 	</script>
 </body>

@@ -2,6 +2,15 @@
 
 $pi:    3.141592653589793;
 
+@function widthToPercent($width, $widthAll: 2032) {
+  @return $width / $widthAll * 1280 + px;
+}
+
+@function heightToPercent($height, $heightAll: 530) {
+  @return $height / $heightAll * 530 + px;
+}
+
+
 @function pow($number, $exp) {
   $value: 1;
   @if $exp > 0 {
