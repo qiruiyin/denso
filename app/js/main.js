@@ -7,24 +7,24 @@ function init(msgFrom, msgTo) {
 
 	// 初始化容器高度
 	var initWidth = function () {
-		var bodyW = document.body.clientWidth;
-		if(msgFrom == "board") {
-			if(bodyW > 1280) {
-				document.querySelector(".board").style.height = 1280 * 0.625 + "px";
-			} else if(bodyW > 320) {
-				document.querySelector(".board").style.height = bodyW * 0.625 + "px";
-			} else {
-				document.querySelector(".board").style.height = 320 * 0.625 + "px";
-			}
-		} else {
-			if(bodyW > 1280) {
-				document.querySelector(".hud").style.height = 1280 * 0.26 + "px";
-			} else if(bodyW > 320) {
-				document.querySelector(".hud").style.height = bodyW * 0.26 + "px";
-			} else {
-				document.querySelector(".hud").style.height = 320 * 0.26 + "px";
-			}
-		}
+		// var bodyW = document.body.clientWidth;
+		// if(msgFrom == "board") {
+		// 	if(bodyW > 1280) {
+		// 		document.querySelector(".board").style.height = 1280 * 0.625 + "px";
+		// 	} else if(bodyW > 320) {
+		// 		document.querySelector(".board").style.height = bodyW * 0.625 + "px";
+		// 	} else {
+		// 		document.querySelector(".board").style.height = 320 * 0.625 + "px";
+		// 	}
+		// } else {
+		// 	if(bodyW > 1280) {
+		// 		document.querySelector(".hud").style.height = 1280 * 0.26 + "px";
+		// 	} else if(bodyW > 320) {
+		// 		document.querySelector(".hud").style.height = bodyW * 0.26 + "px";
+		// 	} else {
+		// 		document.querySelector(".hud").style.height = 320 * 0.26 + "px";
+		// 	}
+		// }
 
 		initSwiper();
 	}
