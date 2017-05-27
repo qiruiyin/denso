@@ -1,0 +1,306 @@
+@charset 'utf-8';
+@import  'sandal/core';
+@import  'core/mixins', 'core/functions', 'core/vars';
+
+.board {
+	width: $boardW;
+	height: $boardH;
+	margin: 0 auto;
+}
+
+.board-img {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: $bg url("../img/board/board.png") no-repeat;
+	background-size: 100%;
+	// 光线
+	&:before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 203px;
+		background: url("../img/board/ray.png") no-repeat;
+		background-size: 100%;
+		z-index: 9;
+	}
+	// 档位
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: 34px;
+		left: 50%;
+		width: 80px;
+		height: 80px;
+		margin-left: -40px;
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+
+	&.gear-d:after {
+		background-image: url("../img/board/gear-d.png");
+	}
+	&.gear-p:after {
+		background-image: url("../img/board/gear-p.png");
+	}
+	&.gear-r:after {
+		background-image: url("../img/board/gear-r.png");
+	}
+
+	.center {
+		position: absolute;
+		top: 110px;
+		left: 250px;
+		width: 800px;
+		height: 560px;
+	}
+
+	.word {
+		position: absolute;
+		top: 64px;
+		left: 50%;
+		width: 305px;
+		height: 46px;
+		margin-left: -157.5px;
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
+}
+
+// 开机动画
+.board-boot {
+	video {
+		width: 100%;
+		height: 100%;
+		background-color: $bg; 
+	}
+}
+
+.board-home-screen, .board1-1 {
+	.center {
+		background: url("../img/board/ipod.png") no-repeat;
+		background-size: 100%;
+	}
+}
+
+.board1-2 {
+	&.active {
+		.center {
+			background-image: url("../img/board/bus-bg.png");
+	
+			&:before {
+				content: "";
+				position: absolute;
+				bottom: 40px;
+				left: 50%;
+				width: 160px;
+				height: 61px;
+				margin-left: -94px;
+				background: url("../img/board/bus.png") no-repeat;
+				background-size: 100%;
+		    z-index: 10;
+			}
+		}
+
+		.word {
+			width: 352px;
+			margin-left: -176px;
+			display: block;
+		}
+	}
+}
+
+.board2-1 , .board2-2 {
+	.center {
+		top: 136px;
+		left: 272px;
+		width: 764px;
+		height: 430px;
+		background-image: url("../img/board/board2-map.jpg");
+		background-size: 100%;
+	}
+	
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		background: $bg;
+	}
+}	
+
+.board3-1 {
+	&.active {
+		.center {
+			background-image:  url("../img/car/car1.png");
+		}
+	}
+
+	.center {
+		position: absolute;
+		top: 263px;
+		left: 50%;
+		width: widthToPercent(365);
+		height: widthToPercent(480);
+		margin-left: - widthToPercent(365/2);
+		background: url("../img/car/car1.png") no-repeat;
+		background-size: 100%;
+	}
+
+	.word {
+		top: -89px;
+		background-image: url("../img/board/word3-1.png");
+	}
+}
+
+.board4-1, .board4-2 {
+	.center {
+		background-image: url("../img/board/board4.png");
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: 21px;
+			left: 50%;
+			width: 429px;
+			height: 70px;
+			margin-left: -215px;
+			background: url("../img/board/car-header.png") no-repeat;
+			background-size: 100%;
+			z-index: 8;
+		}
+	}
+}
+
+.board4-1 {
+	&.active {
+		.board4-1-line {
+			display: none;
+		}
+
+		.word {
+			display: block;
+			background-image: url("../img/board/word4-1.png");
+		}
+	}
+
+	.board4-1-line {
+		content: "";
+		position: absolute;
+		bottom: 146px;
+		right: 243px;
+		width: 357px;
+		height: 412px;
+		margin: 0 auto;
+		background: url("../img/board/board4-1-line.png") no-repeat;
+		background-size: 100%;
+		z-index: 7;
+	}
+	
+	.word {
+		display: none;
+	}
+}
+
+.board4-2 {
+	.word {
+		background-image:  url("../img/board/word4-2.png");
+	}
+}
+
+.board4-1-road, .board4-1-line {
+	position: absolute;
+  bottom: 146px;
+	right: 243px;
+	width: 357px;
+	height: 0;
+	overflow: hidden;
+	z-index: 7;
+
+	&:before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 412px;
+		background: url("../img/board/board4-1-road.png") no-repeat;
+		background-size: 100%;
+	}
+}
+
+.board4-1-line {
+	&:before {
+		background-image: url("../img/board/board4-1-line.png");
+	}
+}
+
+.board4-arrow {
+	position: absolute;	
+  bottom: 145px;
+  left: 617px;
+	width: 474px;
+	height: 0;
+	overflow: hidden;
+		z-index: 7;
+
+	&:before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 260px;
+		background: url("../img/board/board4-2arrow.png") no-repeat;
+		background-size: 100%;
+	}
+}
+
+.board5-1, .board5-2 {
+	.center {
+		position: absolute;
+		top: 263px;
+		left: 50%;
+		width: widthToPercent(365);
+		height: widthToPercent(480);
+		margin-left: - widthToPercent(365/2);
+		background: url("../img/car/car5.png") no-repeat;
+		background-size: 100%;
+	}
+
+	.word {
+		top: -89px;
+		background-image: url("../img/board/word5.png");
+	}
+}
+
+.board5-2 {
+	.center {
+		background-image: url("../img/car/car1.png");
+	}
+}
+
+.board5-arrow {
+	position: absolute;
+	bottom: 181px;
+  left: 308px;
+  width: 60px;
+  height: 77px;
+  overflow: hidden;
+
+  &:before {
+  	content: "";
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+	  width: 180px;	
+	  height: 100%;
+	  background: url("../img/board/board5-arrow.png") no-repeat;
+	  background-size: 100%;
+  }
+}

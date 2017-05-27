@@ -12,13 +12,16 @@
         	<div id="fun1" class="swiper-container">
 				    <div class="swiper-wrapper">
 			        <div class="swiper-slide">
-			        	<div class="board-img board1-1">
-			        		<div class="speed"><span>58</span>km/h</div>
+			        	<div class="board-img gear-d board1-1">
+			        		<div class="speed speed1"><span>58</span>km/h</div>
+			        		<div class="center"></div>
 			        	</div>
         			</div>
         			<div class="swiper-slide">
-			        	<div class="board-img board1-2">
-			        		<div class="speed"><span>58</span>km/h</div>
+        				<div class="board-img gear-d board1-2">
+			        		<div class="speed speed1"><span>58</span>km/h</div>
+			        		<div class="center"></div>
+			        		<audio src="./img/audio/1-2.wav"></audio>
 			        	</div>
         			</div>
         		</div>
@@ -28,13 +31,20 @@
         	<div id="fun2" class="swiper-container">
 				    <div class="swiper-wrapper">
 			        <div class="swiper-slide">
-			        	<div class="board-img board2-1">
-			        		<div class="speed"><span>58</span>km/h</div>
+			        	<div class="board-img gear-d board2-1">
+			        		<div class="speed speed1"><span>58</span>km/h</div>
+			        		<div class="center">
+			        			<video src="img/2-1.webm" width="100%" loop="true">
+											您的浏览器不支持 video 标签。
+										</video>
+			        		</div>
 			        	</div>
         			</div>
         			<div class="swiper-slide">
-			        	<div class="board-img board2-2">
-			        		<div class="speed"><span>58</span>km/h</div>
+			        	<div class="board-img gear-d board2-2">
+			        		<div class="speed speed1"><span>58</span>km/h</div>
+									<div class="center">									
+									</div>
 			        	</div>
         			</div>
         		</div>
@@ -44,13 +54,11 @@
         	<div id="fun3" class="swiper-container">
 				    <div class="swiper-wrapper">
 			        <div class="swiper-slide">
-			        	<div class="board-img board3-1">
-			        		<div class="speed"><span>58</span>km/h</div>
-			        	</div>
-        			</div>
-        			<div class="swiper-slide">
-			        	<div class="board-img board3-2">
-			        		<div class="speed"><span>58</span>km/h</div>
+			        	<div class="board-img gear-d board3-1">
+			        		<div class="speed speed3"><span>6</span>km/h</div>
+									<div class="center">
+										<div class="word"></div>
+									</div>
 			        	</div>
         			</div>
         		</div>
@@ -60,15 +68,24 @@
         	<div id="fun4" class="swiper-container">
 				    <div class="swiper-wrapper">
 			        <div class="swiper-slide">
-			        	<div class="board-img board4-1">
-			        		<div class="speed"><span>58</span>km/h</div>
-			        		<img class="board4-1arrow" src="./img/board/board4-1arrow.png" alt="">
+			        	<div class="board-img gear-d board4-1">
+			        		<div class="speed speed1"><span>58</span>km/h</div>
+			        		<div class="center">
+			        			<div class="word"></div>
+			        		</div>
+			        		<div class="board4-1-road"></div>
+			        		<div class="board4-1-line"></div>
+			        		<audio src="./img/audio/4-1.wav"></audio>
 			        	</div>
         			</div>
         			<div class="swiper-slide">
-			        	<div class="board-img board4-2">
-			        		<div class="speed"><span>58</span>km/h</div>
-			        		<img class="board4-2arrow" src="./img/board/board4-2arrow.png" alt="">
+			        	<div class="board-img gear-d board4-2">
+			        		<div class="speed speed1"><span>58</span>km/h</div>
+			        		<div class="center">
+			        			<div class="word"></div>
+			        		</div>
+			        		<div class="board4-arrow"></div>
+			        		<audio src="./img/audio/4-2.wav"></audio>
 			        	</div>
         			</div>
         		</div>
@@ -78,13 +95,20 @@
         	<div id="fun5" class="swiper-container">
 				    <div class="swiper-wrapper">
 			        <div class="swiper-slide">
-			        	<div class="board-img board5-1">
-			        		<div class="speed"><span>58</span>km/h</div>
+			        	<div class="board-img gear-r board5-1">
+			        		<div class="speed speed5"><span>1</span>km/h</div>
+									<div class="center">
+									</div>
 			        	</div>
         			</div>
         			<div class="swiper-slide">
-			        	<div class="board-img board5-2">
-			        		<div class="speed"><span>58</span>km/h</div>
+			        	<div class="board-img gear-r board5-2">
+			        		<div class="speed speed5"><span>1</span>km/h</div>
+									<div class="center">
+										<div class="word"></div>
+									</div>
+			        		<div class="board5-arrow"></div>
+			        		<audio src="./img/audio/5-2.wav"></audio>
 			        	</div>
         			</div>
         		</div>
@@ -96,13 +120,21 @@
 		</div>
 	
 		<!-- 待机画面 -->
-		<div class="home-screen"></div>
+		<div class="home-screen">
+			<div class="board-img gear-p board-home-screen">
+    		<div class="speed"><span>0</span>km/h</div>
+    		<div class="center"></div>
+    	</div>
+		</div>
 		<!-- 开机动画 -->
 		<div class="boot-animation">
-			<video id="video" src="img/boot.webm" width="100%">
+			<video id="video" src="img/boot-board.webm">
 				您的浏览器不支持 video 标签。
 			</video>
 		</div>
+
+		<audio class="red-audio" src="./img/audio/red.wav"></audio>
+		<audio class="yellow-audio" src="./img/audio/yellow.wav"></audio>
 	</div>
 
 	@@include("./part/libjs.html")

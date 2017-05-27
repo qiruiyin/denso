@@ -1,3 +1,85 @@
 @charset 'utf-8';
 @import  'sandal/core', 'sandal/core/reset';
 @import  'core/mixins', 'core/functions', 'core/vars';
+
+img {
+	display: block;
+}
+
+audio {
+  visibility: hidden;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+  background-color: $bg;
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+// 轮播切换
+.swiper-container {
+	width: 100%;
+	height: 100%;
+}
+
+.swiper-slide {
+	transition-duration: 0s !important;
+}
+// 待机画面
+.home-screen {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-size: 100%;
+	z-index: 99;
+
+	.hud-img {
+		.speed {
+			i {
+				width: 10%;
+			}
+		}
+	}
+}
+
+// 开机动画
+.boot-animation {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $bg;
+	z-index: 100;
+
+	video {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+// 速度
+.speed {
+	position: absolute;
+	top: 50%;
+	left: 10%;
+	margin-top: -90px;
+	color: #fff;
+  text-align: center;
+  font-size: 40px;
+  line-height: 1;
+
+  span {
+  	font-size: 100px;
+  	display: block;
+  }
+}

@@ -1,0 +1,250 @@
+@charset 'utf-8';
+@import  'sandal/core';
+@import  'core/mixins', 'core/functions', 'core/vars';
+
+
+.board1-2 {
+	&.active {
+		.center {
+			&:before {
+				animation: board-arrow 1s 6;
+			}
+		}
+	}
+}
+
+.board3-1 {
+	.center {
+		&.active {
+			animation: hud-loop 3s infinite;
+		}
+	}
+}
+
+.board5-1 {
+	.center {
+		&.active {
+			animation: hud-loop-five 3s infinite;
+		}
+	}
+}
+
+.board4-1 {
+	&.active {
+		.board4-1-road {
+			animation: board-road 1s infinite;
+		}
+	}
+}
+
+.board4-2 {
+	&.active {
+		.board4-arrow {
+			animation: board-four-arrow 2s infinite;
+		}
+	}
+}
+
+.board5-2 {
+	&.active {
+		.board5-arrow {
+			animation: board-five-arrow 1.5s infinite;
+		}
+	}
+}
+
+.hud1-2 {
+	&.active {
+		.center {
+			&:before {
+				animation: hud-arrow 1s 6;
+			}
+		}
+	}
+}
+
+.hud2-1, .hud2-2 {
+	.direction {
+		animation: hud-change-o 12.5s infinite;
+	}
+}
+
+.hud2-2 {
+	.direction {
+		animation-name: hud-change-t;
+	}
+}
+
+.hud3-1 {
+	.center {
+		&.active {
+			animation: hud-loop 3s infinite;
+		}
+	}
+}
+
+.hud5-1 {
+	.center {
+		&.active {
+			animation: hud-loop-five 3s infinite;
+		}
+	}
+}
+
+.hud4-2 {
+	&.active {
+		.hud4-arrow {
+			animation: hud-four-arrow 2s infinite;
+		}
+	}
+}
+
+.hud5-2 {
+	&.active {
+		.hud5-arrow {
+			animation: hud-five-arrow 1.5s infinite;
+		}
+	}
+}
+
+@keyframes board-arrow {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes board-four-arrow {
+	from {
+		height: 0;
+	}
+	to {
+		height: 266px;
+	}
+}
+
+@keyframes board-five-arrow {
+	0% {
+		width: 60px;
+	}
+	33.99% {
+		width: 60px;
+	}
+	34% {
+		width: 120px;
+	}
+	66.99% {
+		width: 120px;
+	}
+	67% {
+		width: 180px;
+	}
+	99.99% {
+		width: 180px
+	}
+	100% {
+		width: 60px;
+	}
+}
+
+@keyframes board-road {
+	from {
+		height: 0;
+	}
+	to {
+		height: 412px;
+	}
+}
+
+@keyframes hud-change-o {
+	0%, 40%, 100% {
+		background-image: url("../img/hud/hud2-11-direction.png");
+	}
+	50%, 90% {
+		background-image: url("../img/hud/hud2-12-direction.png");
+	}
+
+}
+
+@keyframes hud-change-t {
+	0%, 40%, 100% {
+		background-image: url("../img/hud/hud2-21-direction.png");
+	}
+	50%, 90% {
+		background-image: url("../img/hud/hud2-22-direction.png");
+	}
+}
+
+@keyframes hud-loop {
+	0%, 33.99% {
+		background-image: url("../img/car/car1.png");
+	}
+	34%, 66.99% {
+		background-image: url("../img/car/car2.png");
+	}
+	67%, 99.99% {
+		background-image: url("../img/car/car3.png");
+	}
+	100% {
+		background-image: url("../img/car/car1.png");
+	}
+}
+
+@keyframes hud-loop-five {
+	0%, 33.99% {
+		background-image: url("../img/car/car5.png");
+	}
+	34%, 66.99%  {
+		background-image: url("../img/car/car6.png");
+	}
+	67%, 99.99% {
+		background-image: url("../img/car/car1.png");
+	}
+	100% {
+		background-image: url("../img/car/car5.png");
+	}
+}
+
+@keyframes hud-four-arrow {
+	from {
+		height: 0;
+	}
+	to {
+		height: widthToPercent(219);
+	}
+}
+
+@keyframes hud-arrow {
+	from {
+		opacity: .5
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes hud-five-arrow {
+	0% {
+		width: 24px;
+	}
+	33.99% {
+		width: 24px;
+	}
+	34% {
+		width: 48px;
+	}
+	66.99% {
+		width: 48px;
+	}
+	67% {
+		width: 72px;
+	}
+	99.99% {
+		width: 72px;
+	}
+	100% {
+		width: 24px;
+	}
+}
