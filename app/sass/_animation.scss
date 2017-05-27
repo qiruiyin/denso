@@ -1,0 +1,248 @@
+@charset 'utf-8';
+@import  'sandal/core';
+@import  'core/mixins', 'core/functions', 'core/vars';
+
+.board1 {
+	&.active-s {
+		.center {
+			&:before {
+				animation: ani-fade 1s 6;
+			}
+		}
+	}
+}
+
+.board3 {
+	&.active-a, &.active-s {
+		.center {
+			animation: car-loop 4s infinite;
+		}	
+	}
+}
+
+.board4 {
+	&.active-a .board4-road {
+		animation: board-road 1s infinite;
+	}
+
+	&.active-s .board4-arrow {
+		animation: board-four-arrow 2s infinite;
+	}
+}
+
+.board5 {
+	&.active-a {
+		.center {
+			animation: car-loop-five 4s infinite;
+		}	
+	}
+
+	&.active-s {
+		.board5-arrow {
+			animation: board-five-arrow 1.5s infinite;
+		}
+	}
+}
+
+// hud
+.hud1 {
+	&.active-s {
+		.center {
+			&:before {
+				animation: hud-arrow 1s 6;
+			}
+		}
+	}
+}
+
+.hud2 {
+	&.active-a {
+		.direction {
+			animation: hud-change-o 10s infinite;
+		}
+	}
+
+	&.active-s {
+		.direction {
+			animation: hud-change-t 10s infinite;
+		}
+	}
+}
+
+.hud3 {
+	&.active-a, &.active-s {
+		.center {
+			animation: car-loop 4s infinite;
+		}	
+	}
+}
+
+.hud4 {
+	&.active-s {
+		.hud4-arrow {
+			animation: hud-four-arrow 2s infinite;
+		}
+	}
+}
+
+.hud5 {
+	&.active-a {
+		.center {
+			animation: car-loop-five 4s infinite;
+		}
+	}
+
+	&.active-s {
+		.hud5-arrow {
+			animation: hud-five-arrow 1.5s infinite;
+		}
+	}
+}
+
+@keyframes ani-fade {
+	0% {
+		visibility: visible;
+		opacity: 0;
+	}
+	50% {
+		visibility: visible;
+		opacity: 1;
+	}
+	100% {
+		visibility: visible;
+		opacity: 0;
+	}
+}
+
+@keyframes car-loop {
+	0% {
+		background-image: url("../img/car/car1.png");
+	}
+	33.3% {
+		background-image: url("../img/car/car2.png");
+	}
+	66.6% {
+		background-image: url("../img/car/car3.png");
+	}
+	100% {
+		background-image: url("../img/car/car1.png");
+	}
+}
+
+@keyframes board-road {
+	from {
+		height: 0;
+	}
+	to {
+		height: 412px;
+	}
+}
+
+@keyframes board-four-arrow {
+	from {
+		height: 0;
+	}
+	to {
+		height: 266px;
+	}
+}
+
+@keyframes car-loop-five {
+	0% {
+		background-image: url("../img/car/car5.png");
+	}
+	33.3% {
+		background-image: url("../img/car/car6.png");
+	}
+	66.6% {
+		background-image: url("../img/car/car1.png");
+	}
+	100% {
+		background-image: url("../img/car/car5.png");
+	}
+}
+
+@keyframes board-five-arrow {
+	0% {
+		width: 60px;
+	}
+	33.99% {
+		width: 60px;
+	}
+	34% {
+		width: 120px;
+	}
+	66.99% {
+		width: 120px;
+	}
+	67% {
+		width: 180px;
+	}
+	99.99% {
+		width: 180px
+	}
+	100% {
+		width: 60px;
+	}
+}
+
+// hud
+@keyframes hud-arrow {
+	from {
+		opacity: 0.5;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes hud-change-o {
+	0%, 40%, 100% {
+		background-image: url("../img/hud/hud2-11-direction.png");
+	}
+	50%, 90% {
+		background-image: url("../img/hud/hud2-12-direction.png");
+	}
+}
+
+@keyframes hud-change-t {
+	0%, 40%, 100% {
+		background-image: url("../img/hud/hud2-21-direction.png");
+	}
+	50%, 90% {
+		background-image: url("../img/hud/hud2-22-direction.png");
+	}
+}
+
+@keyframes hud-four-arrow {
+	from {
+		height: 0;
+	}
+	to {
+		height: widthToPercent(219);
+	}
+}
+
+@keyframes hud-five-arrow {
+	0% {
+		width: 24px;
+	}
+	33.99% {
+		width: 24px;
+	}
+	34% {
+		width: 48px;
+	}
+	66.99% {
+		width: 48px;
+	}
+	67% {
+		width: 72px;
+	}
+	99.99% {
+		width: 72px;
+	}
+	100% {
+		width: 24px;
+	}
+}

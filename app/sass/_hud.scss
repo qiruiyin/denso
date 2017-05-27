@@ -2,34 +2,39 @@
 @import  'sandal/core';
 @import  'core/mixins', 'core/functions', 'core/vars';
 
+$hudBottom: 32px;
+
 .hud {
 	width: $hudW;
 	height: $hudH;
 	margin: 0 auto;
-	
-	.home-screen {
-		background: $bg;
-	}
 
-	.boot-animation {
+	.hud-boot {
+		text-align: center;
+
 		video {
 			height: 500px;
+			margin: 0 auto;
+		}
+	}
+
+	.hud-home-screen {
+		.speed {
+			i {
+				width: 10%;
+			}
 		}
 	}
 }
 
-// hud
-$hudBottom: heightToPercent(57);
 .hud-img {
-	width: 100%;
-	height: 100%;
 	background: $bg;
 	
 	.speed {
     bottom: $hudBottom;
     top: auto;
-    left: widthToPercent(96);
-		width: widthToPercent(505);
+    left: 32px;
+		width: 315px;
 		height: 100px;
     text-align: left;
     font-size: 30px;
@@ -65,8 +70,8 @@ $hudBottom: heightToPercent(57);
 		position: absolute;
 		left: 50%;
 		bottom: $hudBottom;
-		margin-left: - widthToPercent(402/2);
-		width: widthToPercent(402);
+		background-repeat: no-repeat;
+		background-size: 100%;
 		
 		&	>	img {
 			width: 100%;
@@ -76,21 +81,31 @@ $hudBottom: heightToPercent(57);
 	.direction {
 		position: absolute;
 		bottom: $hudBottom;
-		right: widthToPercent(68);
-		width: widthToPercent(516);
+		right: 42px;
+		background-repeat: no-repeat;
+		background-size: 100%;
 	}
 }
 
-.hud1-2 {
-	&.active {
+
+.hud1 {
+	&.active-s {
 		.center {
-			&:before {
-				// animation: hud-arrow 1s 6;
-			}
+			display: block;
+		}
+
+		.direction {
+			background-image: url("../img/hud/hud1-2-direction.png");
 		}
 	}
 
 	.center {
+		width: 252px;
+		height: 154px;
+		margin-left: - (252px/2);
+		background-image: url("../img/hud/hud1-2-center.png");
+		display: none;
+
 		&:before {
 			content: "";
 			position: absolute;
@@ -102,34 +117,49 @@ $hudBottom: heightToPercent(57);
 			background-size: 100%;
 		}
 	}
-}
-
-.hud2-1, .hud2-2 {
 
 	.direction {
-		right: 90px;
-		width: widthToPercent(493);
-		height: widthToPercent(239);
-		background: url("../img/hud/hud2-11-direction.png") no-repeat;
-		background-size: 100%;
-		// animation: hud-change-o 12.5s infinite;
+		width: 340px;
+		height: 109px;
+		background-image: url("../img/hud/hud1-1-direction.png");
+	}
+}
+
+.hud2 {
+	&.active-s {
+		.direction {
+			width: 340px;
+			height: 109px;
+			background-image: url("../img/hud/hud2-21-direction.png");
+		}
+
+		.address {
+			display: none;
+		}
+	}
+
+	.direction {
+		right: 66px;
+		width: 310px;
+		height: 150px;
+		background-image: url("../img/hud/hud2-11-direction.png");
 	}
 
 	.address {
 		position: absolute;
-		left: - widthToPercent(46);
-		top: - heightToPercent(50);
+		left: -29px;
+		top: -50px;
 		bottom: 0;
-		right: - heightToPercent(100);
+		right: -100px;
 		color: #fff;
 
 		p {
-			margin-right: widthToPercent(90);
+			margin-right: 56px;
 			font-size: 26px;
 			display: inline-block;
 
 			&:nth-child(2) {
-				margin-right: widthToPercent(110);
+				margin-right: 69px;
 			}
 			
 			&:nth-child(4) {
@@ -141,16 +171,7 @@ $hudBottom: heightToPercent(57);
 	}
 }
 
-.hud2-2 {
-	.direction {
-		width: widthToPercent(541);
-		height: widthToPercent(173);
-		background-image: url("../img/hud/hud2-21-direction.png");
-		// animation-name: hud-change-t;
-	}
-}
-
-.hud3-1, .hud5-1, .hud5-2 {
+.hud3, .hud5, .hud5 {
 	.center {
 		width: 100px;
 		height: 131px;
@@ -160,58 +181,30 @@ $hudBottom: heightToPercent(57);
 	}
 }
 
-.hud3-1 {
-	.center {
-		&.active {
-			// animation: hud-loop 3s infinite;
-		}
-	}
-}
-.hud5-1 {
-	.center {
-		background-image: url("../img/car/car5.png");
-		
-
-		&.active {
-			// animation: hud-loop-five 3s infinite;
-		}
-	}
-}
-
-.hud3-2 {
-	.center {
-		width: widthToPercent(901);
-		margin-left: - widthToPercent(901/2);
-	}
-}
-
-.hud4-1, .hud4-2 {
-	&.active {
+.hud4 {
+	&.active-a {
 		.hud4-car {
 			display: block;
 		}		
 	}
 
 	.center {
-		bottom: 92px;
-		width: widthToPercent(402);
-		margin-left: - widthToPercent(402/2);
+		bottom: 70px;
+		width: 254px;
+		height: 145px;
+		margin-left: - (254px/2);
+		background-image: url("../img/hud/hud4-center.png");
 	}
 
 	.hud4-car {
 		position: absolute;
 		bottom: -25px;
 		right: -50px;
-		width: widthToPercent(92);
+		width: 59px;
+		height: 96px;
+		background: url("../img/hud/hud4-car.png") no-repeat;
+		background-size: 100%;
 		display: none;
-	}
-}
-
-.hud4-2 {
-	&.active {
-		.hud4-arrow {
-			// animation: hud-four-arrow 2s infinite;
-		}
 	}
 
 	.hud4-arrow {
@@ -235,8 +228,21 @@ $hudBottom: heightToPercent(57);
 	}
 }
 
-.hud5-1, .hud5-2 {
+
+.hud5 {
+	&.active-s {
+		.center {
+			background-image: url("../img/car/car1.png");
+		}
+
+		.hud5-arrow {
+			display: block;
+		}
+	}
+
 	.center {
+		background-image: url("../img/car/car5.png");
+		
 		&:before {
 			content: "R";
 			position: absolute;
@@ -246,33 +252,26 @@ $hudBottom: heightToPercent(57);
 			color: #fff;
 			line-height: 1;
 		}
-
-		.hud5-arrow {
-			position: absolute;
-			bottom: 0;
-			left: -80px;
-			width: 24px;
-			height: 30px;
-			overflow: hidden;
-
-			&:before {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 72px;
-				height: 100%;
-				background: url("../img/hud/hud5-arrow.png") no-repeat;
-				background-size: 100%;
-			}
-		}
 	}
-}
 
-.hud5-2 {
-	&.active {
-		.hud5-arrow {
-			// animation: hud-five-arrow 1.5s infinite;
+	.hud5-arrow {
+		position: absolute;
+		bottom: 0;
+		left: -80px;
+		width: 24px;
+		height: 30px;
+		overflow: hidden;
+		display: none;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 72px;
+			height: 100%;
+			background: url("../img/hud/hud5-arrow.png") no-repeat;
+			background-size: 100%;
 		}
 	}
 }

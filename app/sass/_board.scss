@@ -55,6 +55,7 @@
 		left: 250px;
 		width: 800px;
 		height: 560px;
+		background-size: 100%;
 	}
 
 	.word {
@@ -71,6 +72,12 @@
 
 // 开机动画
 .board-boot {
+	background: $bg;
+
+	&:before {
+		display: none;
+	}
+
 	video {
 		width: 100%;
 		height: 100%;
@@ -78,15 +85,15 @@
 	}
 }
 
-.board-home-screen, .board1-1 {
+.board-home-screen, .board1 {
 	.center {
 		background: url("../img/board/ipod.png") no-repeat;
 		background-size: 100%;
 	}
 }
 
-.board1-2 {
-	&.active {
+.board1 {
+	&.active-s {
 		.center {
 			background-image: url("../img/board/bus-bg.png");
 	
@@ -100,7 +107,7 @@
 				margin-left: -94px;
 				background: url("../img/board/bus.png") no-repeat;
 				background-size: 100%;
-		    z-index: 10;
+				z-index: 10;
 			}
 		}
 
@@ -110,18 +117,27 @@
 			display: block;
 		}
 	}
+
+	.word {
+		display: none;
+	}
 }
 
-.board2-1 , .board2-2 {
+.board2 {
+	&.active-s {
+		video {
+			display: none;
+		}
+	}
+
 	.center {
 		top: 136px;
 		left: 272px;
 		width: 764px;
 		height: 430px;
 		background-image: url("../img/board/board2-map.jpg");
-		background-size: 100%;
 	}
-	
+
 	video {
 		position: absolute;
 		top: 0;
@@ -132,15 +148,9 @@
 		height: 100%;
 		background: $bg;
 	}
-}	
+}
 
-.board3-1 {
-	&.active {
-		.center {
-			background-image:  url("../img/car/car1.png");
-		}
-	}
-
+.board3, .board5 {
 	.center {
 		position: absolute;
 		top: 263px;
@@ -154,11 +164,62 @@
 
 	.word {
 		top: -89px;
+	}
+}
+
+.board3 {
+	.word {
 		background-image: url("../img/board/word3-1.png");
 	}
 }
 
-.board4-1, .board4-2 {
+.board5 {
+	&.active-s {
+		.center {
+			background-image: url("../img/car/car1.png");
+		}
+
+		.board5-arrow {
+			display: block;
+		}
+
+		.word {
+			background-image: url("../img/board/word5.png");
+		}
+	}
+
+	.center {
+		background-image: url("../img/car/car5.png");
+	}
+}
+
+.board4 {
+	&.active-a, &.active-s {
+		.board4-line {
+			display: none;
+		}
+
+		.word {
+			display: block;
+		}
+	}
+	
+	&.active-a {
+		.word {
+			background-image: url("../img/board/word4-1.png");
+		}
+	}
+	
+	&.active-s {
+		.word {
+			background-image: url("../img/board/word4-2.png");
+		}
+
+		.board4-road {
+			display: none;
+		}
+	}
+
 	.center {
 		background-image: url("../img/board/board4.png");
 
@@ -175,45 +236,13 @@
 			z-index: 8;
 		}
 	}
-}
 
-.board4-1 {
-	&.active {
-		.board4-1-line {
-			display: none;
-		}
-
-		.word {
-			display: block;
-			background-image: url("../img/board/word4-1.png");
-		}
-	}
-
-	.board4-1-line {
-		content: "";
-		position: absolute;
-		bottom: 146px;
-		right: 243px;
-		width: 357px;
-		height: 412px;
-		margin: 0 auto;
-		background: url("../img/board/board4-1-line.png") no-repeat;
-		background-size: 100%;
-		z-index: 7;
-	}
-	
 	.word {
 		display: none;
 	}
 }
 
-.board4-2 {
-	.word {
-		background-image:  url("../img/board/word4-2.png");
-	}
-}
-
-.board4-1-road, .board4-1-line {
+.board4-road, .board4-line {
 	position: absolute;
   bottom: 146px;
 	right: 243px;
@@ -229,14 +258,17 @@
 		left: 0;
 		width: 100%;
 		height: 412px;
-		background: url("../img/board/board4-1-road.png") no-repeat;
+		background: url("../img/board/board4-road.png") no-repeat;
 		background-size: 100%;
 	}
 }
 
-.board4-1-line {
+.board4-line {
+	height: 412px;
+	overflow: auto;
+
 	&:before {
-		background-image: url("../img/board/board4-1-line.png");
+		background-image: url("../img/board/board4-line.png");
 	}
 }
 
@@ -247,7 +279,7 @@
 	width: 474px;
 	height: 0;
 	overflow: hidden;
-		z-index: 7;
+	z-index: 7;
 
 	&:before {
 		content: "";
@@ -261,29 +293,7 @@
 	}
 }
 
-.board5-1, .board5-2 {
-	.center {
-		position: absolute;
-		top: 263px;
-		left: 50%;
-		width: widthToPercent(365);
-		height: widthToPercent(480);
-		margin-left: - widthToPercent(365/2);
-		background: url("../img/car/car5.png") no-repeat;
-		background-size: 100%;
-	}
 
-	.word {
-		top: -89px;
-		background-image: url("../img/board/word5.png");
-	}
-}
-
-.board5-2 {
-	.center {
-		background-image: url("../img/car/car1.png");
-	}
-}
 
 .board5-arrow {
 	position: absolute;
@@ -292,6 +302,7 @@
   width: 60px;
   height: 77px;
   overflow: hidden;
+  display: none;
 
   &:before {
   	content: "";
