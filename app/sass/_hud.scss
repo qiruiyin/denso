@@ -1,0 +1,277 @@
+@charset 'utf-8';
+@import  'sandal/core';
+@import  'core/mixins', 'core/functions', 'core/vars';
+
+$hudBottom: 32px;
+
+.hud {
+	width: $hudW;
+	height: $hudH;
+	margin: 0 auto;
+
+	.hud-boot {
+		text-align: center;
+
+		video {
+			height: 500px;
+			margin: 0 auto;
+		}
+	}
+
+	.hud-home-screen {
+		.speed {
+			i {
+				width: 10%;
+			}
+		}
+	}
+}
+
+.hud-img {
+	background: $bg;
+	
+	.speed {
+    bottom: $hudBottom;
+    top: auto;
+    left: 32px;
+		width: 315px;
+		height: 100px;
+    text-align: left;
+    font-size: 30px;
+
+    &:before {
+    	content: "";
+    	position: absolute;
+    	bottom: 0;
+    	width: 100%;
+    	height: 26px;
+    	background: url("../img/hud/speed-mark.png") no-repeat;
+	    background-size: 100%;
+    }
+
+    span {
+    	padding-right: 10px;
+    	font-size: 50px;
+    	display: inline;
+    }
+
+    i {
+    	position: absolute;
+			bottom: 34px;
+			left: 0;
+    	width: 58%;
+    	height: 10px;
+    	background: url("../img/hud/speed.jpg");
+    	background-size: auto 100%;
+    }
+	}
+
+	.center {
+		position: absolute;
+		left: 50%;
+		bottom: $hudBottom;
+		background-repeat: no-repeat;
+		background-size: 100%;
+		
+		&	>	img {
+			width: 100%;
+		}
+	}
+
+	.direction {
+		position: absolute;
+		bottom: $hudBottom;
+		right: 42px;
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
+}
+
+
+.hud1 {
+	&.active-s {
+		.center {
+			display: block;
+		}
+
+		.direction {
+			background-image: url("../img/hud/hud1-2-direction.png");
+		}
+	}
+
+	.center {
+		width: 252px;
+		height: 154px;
+		margin-left: - (252px/2);
+		background-image: url("../img/hud/hud1-2-center.png");
+		display: none;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url("../img/hud/hud1-2-center-road.png") no-repeat;
+			background-size: 100%;
+		}
+	}
+
+	.direction {
+		width: 340px;
+		height: 109px;
+		background-image: url("../img/hud/hud1-1-direction.png");
+	}
+}
+
+.hud2 {
+	&.active-s {
+		.direction {
+			width: 340px;
+			height: 109px;
+			background-image: url("../img/hud/hud2-21-direction.png");
+		}
+
+		.address {
+			display: none;
+		}
+	}
+
+	.direction {
+		right: 66px;
+		width: 310px;
+		height: 150px;
+		background-image: url("../img/hud/hud2-11-direction.png");
+	}
+
+	.address {
+		position: absolute;
+		left: -29px;
+		top: -50px;
+		bottom: 0;
+		right: -100px;
+		color: #fff;
+
+		p {
+			margin-right: 56px;
+			font-size: 26px;
+			display: inline-block;
+
+			&:nth-child(2) {
+				margin-right: 69px;
+			}
+			
+			&:nth-child(4) {
+				position: absolute;
+				bottom: -12px;
+				left: 80px; 
+			}
+		}
+	}
+}
+
+.hud3, .hud5, .hud5 {
+	.center {
+		width: 100px;
+		height: 131px;
+		margin-left: -50px;
+		background: url("../img/car/car1.png") no-repeat;
+		background-size: 100%;
+	}
+}
+
+.hud4 {
+	&.active-a {
+		.hud4-car {
+			display: block;
+		}		
+	}
+
+	.center {
+		bottom: 70px;
+		width: 254px;
+		height: 145px;
+		margin-left: - (254px/2);
+		background-image: url("../img/hud/hud4-center.png");
+	}
+
+	.hud4-car {
+		position: absolute;
+		bottom: -25px;
+		right: -50px;
+		width: 59px;
+		height: 96px;
+		background: url("../img/hud/hud4-car.png") no-repeat;
+		background-size: 100%;
+		display: none;
+	}
+
+	.hud4-arrow {
+		position: absolute;
+		bottom: -25px;
+		left: 100px;
+		width: widthToPercent(414);
+		height: 0;
+		overflow: hidden;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: widthToPercent(219);
+			background: url("../img/hud/hud4-arrow.png") no-repeat;
+			background-size: 100%;
+		}
+	}
+}
+
+
+.hud5 {
+	&.active-s {
+		.center {
+			background-image: url("../img/car/car1.png");
+		}
+
+		.hud5-arrow {
+			display: block;
+		}
+	}
+
+	.center {
+		background-image: url("../img/car/car5.png");
+		
+		&:before {
+			content: "R";
+			position: absolute;
+			top: 0;
+	    left: -44px;
+    	font-size: 44px;
+			color: #fff;
+			line-height: 1;
+		}
+	}
+
+	.hud5-arrow {
+		position: absolute;
+		bottom: 0;
+		left: -80px;
+		width: 24px;
+		height: 30px;
+		overflow: hidden;
+		display: none;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 72px;
+			height: 100%;
+			background: url("../img/hud/hud5-arrow.png") no-repeat;
+			background-size: 100%;
+		}
+	}
+}

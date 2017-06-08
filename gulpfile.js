@@ -191,7 +191,7 @@
 		return gulp.src(_.pkgs + '/**/*')
 			.pipe($.plumber())
 			.pipe($.useref())
-			.pipe($.if('*.js', $.uglify()))
+			// .pipe($.if('*.js', $.uglify()))
 			.pipe($.if('*.css', $.cssnano()))
 	 		.pipe(gulp.dest(_.dist + '/pkgs'));
 	});
@@ -201,7 +201,7 @@
 		return gulp.src('app/*.html')
 			.pipe($.plumber())
 			.pipe($.useref())
-			.pipe($.if('*.js', $.uglify()))
+			// .pipe($.if('*.js', $.uglify()))
 			// .pipe($.if('*.js', $.rev()))
 			.pipe($.if('*.css', $.cssnano()))
 			// .pipe($.if('*.css', $.rev()))
