@@ -1,0 +1,27 @@
+@charset 'utf-8';
+@import  'sandal/core';
+@import  'core/mixins', 'core/functions', 'core/vars';
+
+
+.icon {
+	position: relative;
+	padding-left: 24px;
+	
+	&:before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 20px;
+		height: 20px;
+		margin-top: -10px;
+		background: url("../img/icon.jpg") no-repeat;
+		background-size: 100%;
+	}
+}
+
+.icon-setup {
+	&:before {
+		background-image: url("../img/icon.jpg");
+	}
+}

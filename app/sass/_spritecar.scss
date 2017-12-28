@@ -1,0 +1,145 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$car1-name: 'car1';
+$car1-x: 0px;
+$car1-y: 0px;
+$car1-offset-x: 0px;
+$car1-offset-y: 0px;
+$car1-width: 365px;
+$car1-height: 480px;
+$car1-total-width: 1095px;
+$car1-total-height: 960px;
+$car1-image: '../img/car.png';
+$car1: (0px, 0px, 0px, 0px, 365px, 480px, 1095px, 960px, '../img/car.png', 'car1', );
+$car2-name: 'car2';
+$car2-x: 365px;
+$car2-y: 0px;
+$car2-offset-x: -365px;
+$car2-offset-y: 0px;
+$car2-width: 365px;
+$car2-height: 480px;
+$car2-total-width: 1095px;
+$car2-total-height: 960px;
+$car2-image: '../img/car.png';
+$car2: (365px, 0px, -365px, 0px, 365px, 480px, 1095px, 960px, '../img/car.png', 'car2', );
+$car3-name: 'car3';
+$car3-x: 730px;
+$car3-y: 0px;
+$car3-offset-x: -730px;
+$car3-offset-y: 0px;
+$car3-width: 365px;
+$car3-height: 480px;
+$car3-total-width: 1095px;
+$car3-total-height: 960px;
+$car3-image: '../img/car.png';
+$car3: (730px, 0px, -730px, 0px, 365px, 480px, 1095px, 960px, '../img/car.png', 'car3', );
+$car4-name: 'car4';
+$car4-x: 0px;
+$car4-y: 480px;
+$car4-offset-x: 0px;
+$car4-offset-y: -480px;
+$car4-width: 365px;
+$car4-height: 480px;
+$car4-total-width: 1095px;
+$car4-total-height: 960px;
+$car4-image: '../img/car.png';
+$car4: (0px, 480px, 0px, -480px, 365px, 480px, 1095px, 960px, '../img/car.png', 'car4', );
+$car5-name: 'car5';
+$car5-x: 365px;
+$car5-y: 480px;
+$car5-offset-x: -365px;
+$car5-offset-y: -480px;
+$car5-width: 365px;
+$car5-height: 480px;
+$car5-total-width: 1095px;
+$car5-total-height: 960px;
+$car5-image: '../img/car.png';
+$car5: (365px, 480px, -365px, -480px, 365px, 480px, 1095px, 960px, '../img/car.png', 'car5', );
+$car6-name: 'car6';
+$car6-x: 730px;
+$car6-y: 480px;
+$car6-offset-x: -730px;
+$car6-offset-y: -480px;
+$car6-width: 365px;
+$car6-height: 480px;
+$car6-total-width: 1095px;
+$car6-total-height: 960px;
+$car6-image: '../img/car.png';
+$car6: (730px, 480px, -730px, -480px, 365px, 480px, 1095px, 960px, '../img/car.png', 'car6', );
+$spritesheet-width: 1095px;
+$spritesheet-height: 960px;
+$spritesheet-image: '../img/car.png';
+$spritesheet-sprites: ($car1, $car2, $car3, $car4, $car5, $car6, );
+$spritesheet: (1095px, 960px, '../img/car.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

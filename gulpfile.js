@@ -52,28 +52,28 @@
 	var spritesmith = require("gulp.spritesmith");
 
 	gulp.task('sprite', function () {
-		var demo = gulp.src('app/img/demo/*.jpg')
+		var car = gulp.src('app/img/car/*.png')
 			.pipe(spritesmith({
-				imgName: './app/img/demo.png',
-				cssName: './app/sass/_spritedemo.scss',
-				cssFormat: 'scss'
+				imgName: './app/img/car1.png',
+				cssName: './app/sass/spritecar1.css',
+				cssFormat: 'css'
 			}))
 			.pipe(gulp.dest('./'));
-		var test = gulp.src('app/img/test/*.jpg')
-			.pipe(spritesmith({
-				imgName: './app/img/test.png',
-				cssName: './app/sass/_spritetest.scss',
-				cssFormat: 'scss'
-			}))
-			.pipe(gulp.dest('./'));
-		var icon = gulp.src('app/img/icon/*.png')
-			.pipe(spritesmith({
-				imgName: './app/img/icon.png',
-				cssName: './app/sass/_icon.styl',
-				cssFormat: 'stylus'
-			}))
-			.pipe(gulp.dest('./'));
-		return $.mergeStream(demo, test, icon);
+		// var test = gulp.src('app/img/test/*.jpg')
+		// 	.pipe(spritesmith({
+		// 		imgName: './app/img/test.png',
+		// 		cssName: './app/sass/_spritetest.scss',
+		// 		cssFormat: 'scss'
+		// 	}))
+		// 	.pipe(gulp.dest('./'));
+		// var icon = gulp.src('app/img/icon/*.png')
+		// 	.pipe(spritesmith({
+		// 		imgName: './app/img/icon.png',
+		// 		cssName: './app/sass/_icon.styl',
+		// 		cssFormat: 'stylus'
+		// 	}))
+		// 	.pipe(gulp.dest('./'));
+		return $.mergeStream(car);
 	});
 	// gulp-sass, gulp-autoprefixer, gulp-sourcemaps
 	// 将sass预处理为css，
@@ -203,7 +203,7 @@
 			.pipe($.useref())
 			// .pipe($.if('*.js', $.uglify()))
 			// .pipe($.if('*.js', $.rev()))
-			.pipe($.if('*.css', $.cssnano()))
+			// .pipe($.if('*.css', $.cssnano()))
 			// .pipe($.if('*.css', $.rev()))
 			.pipe(gulp.dest(_.dist));
 	});
